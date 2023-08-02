@@ -16,7 +16,6 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl() {
         this.userRepository = userRepository;
-        userRepository.updateUsers();
     }
 
 
