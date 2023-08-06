@@ -11,14 +11,12 @@ import java.util.List;
 
 
 public class UserServiceImpl implements UserService {
-    private UserRepository userRepository = new UserRepository();
+    private UserRepository userRepository;
 
 
-    public UserServiceImpl() {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        userRepository.updateUsers();
     }
-
 
     @Override
     public User registration(String login, String password, String name, String surname) {
