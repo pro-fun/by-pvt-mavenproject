@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserRepository extends FileWorker {
     private static List<User> users = new ArrayList<>();
-    public static String PATH = "C:\\Users\\pprof\\HomeworkEnt1\\src\\main\\resources\\users";
+    public static String PATH = "C:\\Users\\pprof\\by-pvt-mavenproject\\core\\src\\main\\resources\\users";
 
     public void saveChangesWithUsers(List<User> users){
         serializeObject(users, PATH);
