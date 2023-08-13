@@ -1,4 +1,4 @@
-package by.academypvt.api.dto;
+package by.academypvt.api.dto.good;
 
 public enum Type {
     TYPE1,

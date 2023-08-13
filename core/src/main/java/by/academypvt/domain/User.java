@@ -86,8 +86,6 @@ public class User implements Serializable {
         return Objects.hash(userid, name, surname, login, password, role);
     }
 
-    public User() {
-    }
 
     public User(String name, String surname, String login, String password) {
         this.name = name;
