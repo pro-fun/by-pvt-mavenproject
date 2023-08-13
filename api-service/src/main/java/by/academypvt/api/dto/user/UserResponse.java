@@ -38,4 +38,14 @@ public class UserResponse {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
+
+    @Override
+    public String toString() {
+        return "UserResponse{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", login='" + login + '\'' +
+                ", fullName='" + fullName + '\'' +
+                '}';
+    }
 }
