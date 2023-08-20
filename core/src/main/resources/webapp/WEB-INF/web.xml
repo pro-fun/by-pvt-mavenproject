@@ -7,13 +7,22 @@
          version="6.0"
          metadata-complete="true">
 <servlet>
-    <servlet-name>UserServlet</servlet-name>
-    <servlet-class>by.academypvt.controller.UserServlet</servlet-class>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>by.academypvt.controller.RegisterServlet</servlet-class>
 </servlet>
     <servlet-mapping>
-        <servlet-name>UserServlet</servlet-name>
-        <url-pattern>/userServlet</url-pattern>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Authorisation</servlet-name>
+        <servlet-class>by.academypvt.controller.AuthorisationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Authorisation</servlet-name>
+        <url-pattern>/authorisation</url-pattern>
+    </servlet-mapping>
+
 
 
 </web-app>

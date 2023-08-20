@@ -1,11 +1,22 @@
 package by.academypvt.api.dto.user;
 
+
+import by.academypvt.api.dto.good.Role;
+
 public class UserResponse {
     private String name;
     private String surname;
     private String login;
     private String fullName;
+    private Role role;
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public String getName() {
         return name;

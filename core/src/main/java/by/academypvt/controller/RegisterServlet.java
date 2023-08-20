@@ -3,21 +3,25 @@ package by.academypvt.controller;
 import by.academypvt.api.dto.user.UserRequest;
 import by.academypvt.api.dto.user.UserResponse;
 import by.academypvt.config.ApplicationContext;
+import by.academypvt.exception.ClientException;
 import by.academypvt.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import by.academypvt.domain.Role;
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class UserServlet extends HttpServlet {
+import static by.academypvt.api.dto.good.Role.CLIENT;
+
+public class RegisterServlet extends HttpServlet {
     private final UserService userService;
 
-    public UserServlet() {
+    public RegisterServlet() {
         this.userService = ApplicationContext.getInstance().getUserService();
     }
 
@@ -27,7 +31,6 @@ public class UserServlet extends HttpServlet {
         PrintWriter printWriter = resp.getWriter();
         resp.setContentType("text/html");
         printWriter.println(users.toString());
-        printWriter.println("123");
         printWriter.close();
     }
 
@@ -37,10 +40,18 @@ public class UserServlet extends HttpServlet {
         String surname = req.getParameter("surname");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        UserRequest userRequest = new UserRequest(name, surname, login, password);
-        userService.registration(userRequest);
+        UserRequest userRequest = new UserRequest(name, surname, login, password, CLIENT);
+        try{
+            userService.registration(userRequest);
+
         List<UserResponse> users = userService.usersInfo();
         req.setAttribute("users", users);
-        req.getRequestDispatcher("/registration.html").forward(req, resp);
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        } catch (ClientException e){
+            PrintWriter printWriter = resp.getWriter();
+
+            req.getRequestDispatcher("/errorregister.jsp").forward(req, resp);
+        }
     }
+
 }

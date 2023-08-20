@@ -1,16 +1,21 @@
 package by.academypvt.api.dto.user;
 
+
+import by.academypvt.api.dto.good.Role;
+
 public class UserRequest {
     private String name;
     private String surname;
     private String login;
     private String password;
+    private Role role;
 
-    public UserRequest(String name, String surname, String login, String password) {
+    public UserRequest(String name, String surname, String login, String password, Role role) {
         this.name = name;
         this.surname = surname;
         this.login = login;
         this.password = password;
+        this.role = role;
     }
 
     public String getName() {
@@ -43,5 +48,13 @@ public class UserRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
