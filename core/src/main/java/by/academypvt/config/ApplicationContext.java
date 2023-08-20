@@ -9,8 +9,6 @@ import by.academypvt.service.UserService;
 import by.academypvt.service.impl.GoodServiceImpl;
 import by.academypvt.service.impl.UserServiceImpl;
 
-import java.io.PrintWriter;
-
 public class ApplicationContext {
     private static ApplicationContext applicationContext;
     private final GoodRepository goodRepository;
@@ -22,10 +20,10 @@ public class ApplicationContext {
     private ApplicationContext(){
         goodRepository = new GoodRepository();
         userRepository = new UserRepository();
-        userService = new UserServiceImpl(userRepository);
-        goodService = new GoodServiceImpl(goodRepository);
-        goodMapper = new GoodMapper();
         userMapper = new UserMapper();
+        userService = new UserServiceImpl(userRepository, userMapper);
+        goodMapper = new GoodMapper();
+        goodService = new GoodServiceImpl(goodRepository, goodMapper);
         }
         public static ApplicationContext getInstance(){
         if(applicationContext==null){

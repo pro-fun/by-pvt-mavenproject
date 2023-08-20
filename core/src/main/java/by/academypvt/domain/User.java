@@ -4,6 +4,7 @@ package by.academypvt.domain;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
+import by.academypvt.api.dto.good.Role;
 
 public class User implements Serializable {
     @Serial
@@ -86,13 +87,13 @@ public class User implements Serializable {
         return Objects.hash(userid, name, surname, login, password, role);
     }
 
-    public User() {
-    }
 
-    public User(String name, String surname, String login, String password) {
+    public User(String name, String surname, String login, String password, Role role) {
         this.name = name;
         this.surname = surname;
         this.login = login;
         this.password = password;
+        this.role = role;
+
     }
 }
