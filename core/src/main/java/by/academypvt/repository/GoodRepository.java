@@ -6,6 +6,7 @@ import by.academypvt.exception.GoodException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class GoodRepository extends FileWorker {
     private static List<Good> goods = new ArrayList<>();
     public static String PATH = "C:\\Users\\pprof\\by-pvt-mavenproject\\core\\src\\main\\resources\\goods";
@@ -31,7 +32,7 @@ public class GoodRepository extends FileWorker {
     }
     public Good findGoodById(Long id){
         List<Good> goods = allGoods();
-        Good good = (Good)goods.stream().filter(good1 -> good1.getId()==id).findFirst().orElseThrow(()->new GoodException("Товар с номером" + id + "не найден"));
-        return good;
+        return  goods.stream().filter(good1 -> good1.getId() == id).findFirst().orElseThrow(() -> new GoodException("Товар с номером" + id + "не найден"));
+
     }
 }

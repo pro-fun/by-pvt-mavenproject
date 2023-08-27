@@ -1,4 +1,4 @@
-package by.academypvt.api.dto.good;
+package by.academypvt.api.dto.user;
 
 public enum Role {
     ADMIN,

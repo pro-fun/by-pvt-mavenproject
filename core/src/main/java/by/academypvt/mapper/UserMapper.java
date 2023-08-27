@@ -2,7 +2,6 @@ package by.academypvt.mapper;
 
 import by.academypvt.api.dto.user.UserRequest;
 import by.academypvt.api.dto.user.UserResponse;
-import by.academypvt.api.dto.good.Role;
 import by.academypvt.domain.User;
 
 

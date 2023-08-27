@@ -9,14 +9,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import by.academypvt.domain.Role;
 
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import static by.academypvt.api.dto.good.Role.CLIENT;
+import static by.academypvt.api.dto.user.Role.CLIENT;
 
 public class RegisterServlet extends HttpServlet {
     private final UserService userService;
@@ -48,9 +47,8 @@ public class RegisterServlet extends HttpServlet {
         req.setAttribute("users", users);
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
         } catch (ClientException e){
-            PrintWriter printWriter = resp.getWriter();
-
-            req.getRequestDispatcher("/errorregister.jsp").forward(req, resp);
+            req.setAttribute("message", e);
+            req.getRequestDispatcher("/error.jsp").forward(req, resp);
         }
     }
 

@@ -4,7 +4,7 @@ package by.academypvt.domain;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
-import by.academypvt.api.dto.good.Role;
+import by.academypvt.api.dto.user.Role;
 
 public class User implements Serializable {
     @Serial

@@ -1,8 +1,6 @@
 package by.academypvt.api.dto.user;
 
 
-import by.academypvt.api.dto.good.Role;
-
 public class UserResponse {
     private String name;
     private String surname;

@@ -3,7 +3,7 @@ package by.academypvt.service.impl;
 
 import by.academypvt.api.dto.user.UserRequest;
 import by.academypvt.api.dto.user.UserResponse;
-import by.academypvt.api.dto.good.Role;
+import by.academypvt.api.dto.user.Role;
 import by.academypvt.domain.User;
 import by.academypvt.exception.ClientException;
 import by.academypvt.mapper.UserMapper;
@@ -68,7 +68,6 @@ public class UserServiceImpl implements UserService {
 
     public List<UserResponse> usersInfo() {
         return userRepository.allUsers().stream().map(userMapper::mapFromUser).collect(Collectors.toList());
-
     }
 
 }

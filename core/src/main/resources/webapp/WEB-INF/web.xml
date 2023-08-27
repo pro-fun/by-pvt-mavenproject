@@ -22,6 +22,14 @@
         <servlet-name>Authorisation</servlet-name>
         <url-pattern>/authorisation</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GoodServlet</servlet-name>
+        <servlet-class>by.academypvt.controller.GoodServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoodServlet</servlet-name>
+        <url-pattern>/goods</url-pattern>
+    </servlet-mapping>
 
 
 
