@@ -2,6 +2,7 @@ package by.academypvt.domain;
 import by.academypvt.api.dto.good.Type;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Good implements Serializable {
     private static final long serialVersionUID = -7994607932307928487L;
@@ -79,5 +80,18 @@ public class Good implements Serializable {
                 ", price=" + price +
                 ", quantity=" + quantity +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Good good = (Good) o;
+        return quantity == good.quantity && Objects.equals(id, good.id) && type == good.type && Objects.equals(name, good.name) && Objects.equals(code, good.code) && Objects.equals(price, good.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, type, name, code, price, quantity);
     }
 }

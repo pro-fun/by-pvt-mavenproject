@@ -31,7 +31,7 @@ public class GoodRepository extends FileWorker {
         serializeObject(goods, PATH);
     }
     public Good findGoodById(Long id){
-        List<Good> goods = allGoods();
+        goods = allGoods();
         return  goods.stream().filter(good1 -> good1.getId() == id).findFirst().orElseThrow(() -> new GoodException("Товар с номером" + id + "не найден"));
 
     }
