@@ -5,4 +5,5 @@ public class ClientException extends RuntimeException{
         super(message);
         System.err.println(message);
     }
+
 }

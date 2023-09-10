@@ -1,18 +1,29 @@
 package by.academypvt.domain;
+import by.academypvt.api.dto.good.Type;
 
-public class Good {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Good implements Serializable {
+    private static final long serialVersionUID = -7994607932307928487L;
     private Long id;
     private Type type;
     private String name;
     private Long code;
     private Long price;
+    private int quantity;
 
-    public Good(Long id, Type type, String name, Long code, Long price) {
+    public Good(Long id, Type type, String name, Long code, Long price, Integer quantity) {
         this.id = id;
         this.type = type;
         this.name = name;
         this.code = code;
         this.price = price;
+        this.quantity = quantity;
+    }
+
+    public Good() {
+
     }
 
     public Long getId() {
@@ -55,6 +66,14 @@ public class Good {
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
         return "Good{" +
@@ -63,6 +82,20 @@ public class Good {
                 ", name='" + name + '\'' +
                 ", code=" + code +
                 ", price=" + price +
+                ", quantity=" + quantity +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Good good = (Good) o;
+        return quantity == good.quantity && Objects.equals(id, good.id) && type == good.type && Objects.equals(name, good.name) && Objects.equals(code, good.code) && Objects.equals(price, good.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, type, name, code, price, quantity);
     }
 }
