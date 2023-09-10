@@ -7,7 +7,7 @@
 <html>
 <body>
 <div>
-<b>Список всех товаров</b>
+<b>Список всех заказов</b>
 <br>
 <table>
 <c:forEach var="order" items= "${orders}">
@@ -18,7 +18,7 @@
 <td> Цена: ${order.cost}</td>
 </tr>
 <tr>
-<td> Статус: ${good.state}</td>
+<td> Статус: ${order.state.toString()}</td>
 </tr>
 </c:forEach>
 </table>

@@ -62,6 +62,22 @@
         <servlet-name>OrderServlet</servlet-name>
         <url-pattern>/orders</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>OrderChangingServlet</servlet-name>
+        <servlet-class>by.academypvt.controller.orders.OrderChangingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderChangingServlet</servlet-name>
+        <url-pattern>/ordersforadmin</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>LogOutServlet</servlet-name>
+        <servlet-class>by.academypvt.controller.LogOutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogOutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
 
 
 
@@ -93,6 +109,10 @@
     <filter-mapping>
         <filter-name>AdministrationFilter</filter-name>
         <url-pattern>/goodsupdate</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdministrationFilter</filter-name>
+        <url-pattern>/ordersforadmin</url-pattern>
     </filter-mapping>
 
 </web-app>

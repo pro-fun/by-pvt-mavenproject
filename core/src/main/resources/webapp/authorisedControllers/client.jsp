@@ -91,6 +91,13 @@
       <br>
 <br>
 
+<b>Выйти из профиля</b>
+<form name="Form"
+      method="get"
+      action="http://localhost:8081/logout">
+    <input type=submit value="LogOut">
+</form>
+
 </body>
 </html>
 

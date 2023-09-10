@@ -14,6 +14,7 @@ public interface OrderRepository {
     void toChangeOrderState(Long orderId, State state);
     Long findOrderNumber(Long userid, String state);
     void addCostToOrder(Long orderId, Long quantity, Long goodId);
+    List<Order> findOrdersForBasketId(Long basketId);
 
 
 }

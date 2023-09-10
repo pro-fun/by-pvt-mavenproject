@@ -3,7 +3,6 @@ package by.academypvt.controller;
 import by.academypvt.api.dto.user.UserResponse;
 import by.academypvt.config.ApplicationContext;
 import by.academypvt.api.dto.user.Role;
-import by.academypvt.exception.ClientException;
 import by.academypvt.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

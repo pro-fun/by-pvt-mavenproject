@@ -55,10 +55,6 @@ public class UserRepositoryJdbc implements UserRepository {
             preparedStatement.setLong(1, clientId);
             ResultSet resultSet = preparedStatement.executeQuery();
             User user = null;
-            if (resultSet == null) {
-                return new User();
-            }
-
             while (resultSet.next()) {
                 int id = Integer.valueOf(resultSet.getString(1));
                 String name = resultSet.getString(2);
@@ -116,9 +112,6 @@ public class UserRepositoryJdbc implements UserRepository {
             preparedStatement.setString(1, userLogin);
             ResultSet resultSet = preparedStatement.executeQuery();
             User user = null;
-            if (resultSet==null) {
-                return new User();
-            }
             while (resultSet.next()) {
                 int id = Integer.valueOf(resultSet.getString(1));
                 String name = resultSet.getString(2);

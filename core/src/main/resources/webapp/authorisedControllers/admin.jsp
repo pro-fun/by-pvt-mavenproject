@@ -9,7 +9,7 @@
 <b>Здравствуйте, </b> <c:out value = "${userResponse.name}"/>
 </div>
 <br>
-
+<b>Список всех товаров в магазине</b>
 <br>
 <form name="Form"
       method="GET"
@@ -18,6 +18,7 @@
       </form>
       <br>
 
+<b>Добавить товар в магазин</b>
 <form name="Form"
       method="Post"
       action="http://localhost:8081/goodsupdate">
@@ -50,6 +51,8 @@
     </div>
 </form>
 <br>
+
+<b>Удалить товар из магазина</b>
 <form name="Form"
       method="post"
       action="http://localhost:8081/goodsupdate">
@@ -62,6 +65,9 @@
     </div>
 </form>
 <br>
+
+
+<b>Найти товар по ID</b>
 <form name="Form"
       method="post"
       action="http://localhost:8081/goods">
@@ -76,7 +82,7 @@
 
 
 <br>
-
+<b>Список всех клиентов магазина</b>
 <br>
 <form name="Form"
       method="GET"
@@ -85,6 +91,7 @@
       </form>
       <br>
 
+<b>Найти клиента по ID</b>
 <form name="Form"
       method="post"
       action="http://localhost:8081/usersupdate">
@@ -97,6 +104,7 @@
 </form>
       <br>
 
+<b>Удалить клиента по ID</b>
 <form name="Form"
       method="post"
       action="http://localhost:8081/usersupdate">
@@ -108,6 +116,50 @@
     </div>
 </form>
 
+<b>Все заказы магазина</b>
+<br>
+<form name="Form"
+      method="GET"
+      action="http://localhost:8081/ordersforadmin">
+      <input type=submit value="Все заказы магазина">
+      </form>
+      <br>
+
+
+<b>Удалить заказ</b>
+<br>
+<form name="Form"
+      method="post"
+      action="http://localhost:8081/ordersforadmin">
+    <div>
+        <label><b>Id заказа</b></label>
+        <input type="text" placeholder="ID" name="idDelete">
+
+    <input type="hidden" name="action" value = "delete">
+    <input type=submit value="Удалить заказ">
+    </div>
+</form>
+<br>
+
+<b>Найти заказ по ID</b>
+<form name="Form"
+      method="post"
+      action="http://localhost:8081/ordersforadmin">
+    <div>
+        <label><b>Id товара</b></label>
+        <input type="text" placeholder="ID" name="idFind">
+
+    <input type="hidden" name="action" value = "find">
+    <input type=submit value="Найти заказ по ID">
+    </div>
+</form>
+
+<b>Выйти из профиля</b>
+<form name="Form"
+      method="get"
+      action="http://localhost:8081/logout">
+    <input type=submit value="LogOut">
+</form>
 
 </body>
 </html>

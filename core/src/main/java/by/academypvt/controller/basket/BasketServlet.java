@@ -27,11 +27,13 @@ public class BasketServlet extends HttpServlet {
         var session = req.getSession(false);
         Long userid = (Long) session.getAttribute("userid");
         var baskets = basketService.toSeeGoodsInBasket(userid);
+        var order = orderService.getOrderForUser(userid);
         if (baskets == null) {
             String message = "В вашей корзине нет товаров";
             req.setAttribute("message", message);
             req.getRequestDispatcher("authorisedControllers/basket.jsp").forward(req, resp);
         } else {
+            req.setAttribute("order", order);
             req.setAttribute("baskets", baskets);
             req.getRequestDispatcher("authorisedControllers/basket.jsp").forward(req, resp);
         }

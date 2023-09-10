@@ -119,10 +119,6 @@ public class GoodRepositoryJdbc implements GoodRepository {
             preparedStatement.setLong(1, code);
             ResultSet resultSet = preparedStatement.executeQuery();
             Good good = null;
-            if (resultSet == null) {
-                return new Good();
-            }
-
             while (resultSet.next()) {
                 Long id = Long.valueOf(resultSet.getString(1));
                 Type type = Type.valueOf(resultSet.getString(2));

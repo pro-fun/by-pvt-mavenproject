@@ -13,6 +13,15 @@
 <c:out value = "${message}"/>
 </div>
 <br>
+
+<tr>
+<td> ID: ${order.id}</td>
+</tr>
+<tr>
+<td> Цена: ${order.cost}</td>
+</tr>
+<tr>
+
 <table>
 <c:forEach var="basket" items= "${baskets}">
 <tr>

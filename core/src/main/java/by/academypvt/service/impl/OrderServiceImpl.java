@@ -56,7 +56,20 @@ public class OrderServiceImpl implements OrderService {
     public void toChangeOrderState(OrderResponse orderResponse) {
         State state = WAITING_FOR_DEPART;
         orderRepository.toChangeOrderState(orderResponse.getId(), state);
+    }
 
+    @Override
+    public List<OrderResponse> allOrders() {
+        return orderRepository.allOrders().stream().map(orderMapper::mapFromOrder).collect(Collectors.toList());
+    }
 
+    @Override
+    public void deleteOrderById(Long id) {
+        orderRepository.deleteOrder(id);
+    }
+
+    @Override
+    public OrderResponse getOrderById(Long id) {
+        return orderMapper.mapFromOrder(orderRepository.findOrderById(id));
     }
 }

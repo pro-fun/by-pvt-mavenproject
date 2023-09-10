@@ -116,14 +116,12 @@ public class OrderRepositoryJdbc implements OrderRepository {
             preparedStatement.setLong(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             Order order = null;
-            if (resultSet == null) {
-                return new Order();
-            }
             while (resultSet.next()) {
+                Long orderId = Long.valueOf(resultSet.getString(1));
                 Long userId = Long.valueOf(resultSet.getString(2));
                 Double cost = Double.valueOf(resultSet.getString(3));
                 State state = State.valueOf(resultSet.getString(4));
-                order = new Order(id, userId, cost, state);
+                order = new Order(orderId, userId, cost, state);
             }
             return order;
 

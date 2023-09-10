@@ -1,6 +1,5 @@
 package by.academypvt.repository.jdbc;
 
-import by.academypvt.api.dto.user.Role;
 import by.academypvt.connection.ProjectConnection;
 import by.academypvt.domain.Basket;
 import by.academypvt.repository.BasketRepository;
@@ -13,8 +12,6 @@ import java.util.List;
 public class BasketRepositoryJdbc implements BasketRepository {
     private final String MAX_ID = "select max(id) from shop.basket";
     private final String FIND_BY_ORDERID = "select * from shop.basket where orderid=?";
-
-
     private final String ADD_BASKET = "insert into shop.basket (id, productid, orderid, count) values (?,?,?,?)";
     private final String FIND_BASKET_BY_BASKETID = "select * from shop.basket where id=?";
     private final String DELETE_BASKET = "delete from shop.basket where id=?";
@@ -97,9 +94,6 @@ public class BasketRepositoryJdbc implements BasketRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ORDERID);
             preparedStatement.setLong(1, orderId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet == null) {
-                return baskets;
-            }
             while (resultSet.next()) {
                 Long id = Long.valueOf(resultSet.getLong(1));
                 Long productId = Long.valueOf(resultSet.getLong(2));

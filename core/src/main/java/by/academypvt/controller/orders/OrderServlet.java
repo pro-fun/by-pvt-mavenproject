@@ -1,8 +1,6 @@
 package by.academypvt.controller.orders;
 
 import by.academypvt.config.ApplicationContext;
-import by.academypvt.service.BasketService;
-import by.academypvt.service.GoodService;
 import by.academypvt.service.OrderService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -12,13 +10,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class OrderServlet extends HttpServlet {
-    private final BasketService basketService;
-    private final GoodService goodService;
     private final OrderService orderService;
 
     public OrderServlet() {
-        this.basketService = ApplicationContext.getInstance().getBasketService();
-        this.goodService = ApplicationContext.getInstance().getGoodService();
         this.orderService = ApplicationContext.getInstance().getOrderService();
     }
 
