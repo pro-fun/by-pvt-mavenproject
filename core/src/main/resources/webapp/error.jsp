@@ -11,9 +11,5 @@
 </div>
 <br>
 
-<p>Пройти Регистрацию: <a href="/registration.jsp">Регистрация</a>.</p>
-<br>
-<p>Пройти Авторизацию: <a href="/authorisation.jsp">Авторизация</a>.</p>
-
 </form>
 </html>

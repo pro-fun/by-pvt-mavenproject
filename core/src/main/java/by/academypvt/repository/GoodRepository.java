@@ -1,38 +1,15 @@
 package by.academypvt.repository;
 
 import by.academypvt.domain.Good;
-import by.academypvt.exception.GoodException;
 
-import java.util.ArrayList;
 import java.util.List;
 
-
-public class GoodRepository extends FileWorker {
-    private static List<Good> goods = new ArrayList<>();
-    public static String PATH = "C:\\Users\\pprof\\by-pvt-mavenproject\\core\\src\\main\\resources\\goods";
-
-    public List<Good> allGoods() {
-        Object object = deserializeObject(PATH);
-        List<Good> goods = new ArrayList<>();
-        if ((object instanceof List<?>)) {
-            goods = (List<Good>) object;
-        }
-        return goods;
-    }
-    public Good addGood(Good good) {
-        goods = allGoods();
-        goods.add(good);
-        serializeObject(goods, PATH);
-        return good;
-    }
-    public void deleteGood(Good good){
-        goods = allGoods();
-        goods.remove(good);
-        serializeObject(goods, PATH);
-    }
-    public Good findGoodById(Long id){
-        goods = allGoods();
-        return  goods.stream().filter(good1 -> good1.getId() == id).findFirst().orElseThrow(() -> new GoodException("Товар с номером" + id + "не найден"));
-
-    }
+public interface GoodRepository {
+    List<Good> allGoods();
+    Good addGood(Good good);
+    void deleteGood(Long goodId);
+    Good findGoodById(Long id);
+    Good findGoodByCode(Long code);
+    Long findGoodsQuantity(Long goodId);
+    void changeGoodsQuantity(Long quantity, Long goodId);
 }

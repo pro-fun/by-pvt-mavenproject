@@ -10,6 +10,7 @@ import by.academypvt.mapper.UserMapper;
 import by.academypvt.repository.UserRepository;
 import by.academypvt.service.UserService;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,23 +20,22 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
-        this.userRepository = userRepository;
+    public UserServiceImpl(UserRepository userRepositoryImpl, UserMapper userMapper) {
+        this.userRepository = userRepositoryImpl;
         this.userMapper = userMapper;
     }
 
     @Override
-    public void registration(UserRequest userRequest) {
+    public void registration(UserRequest userRequest) throws SQLException {
         List<User> users = userRepository.allUsers();
         var user = userMapper.mapToUser(userRequest);
-
         boolean isLoginPresent = users.stream().anyMatch(user1 -> user1.getLogin().equals(user.getLogin()));
         if (isLoginPresent) {
             throw new ClientException("Введённый логин " + user.getLogin() + " уже занят. Введите другой логин.");
         }
         boolean isAdminPresent = users.stream().anyMatch(user2 -> user2.getRole().equals(Role.ADMIN));
         if (!isAdminPresent) {
-            User user1 = new User(user.getName(), user.getSurname(), user.getLogin(), user.getPassword(),user.getRole());
+            User user1 = new User(user.getName(), user.getSurname(), user.getLogin(), user.getPassword(), user.getRole());
             user1.setRole(Role.ADMIN);
             long id = 1L;
             if (!users.isEmpty()) {
@@ -44,30 +44,36 @@ public class UserServiceImpl implements UserService {
             user.setUserid(id);
             userRepository.addUser(user1);
         }
-        if (users==null){
+        if (users == null) {
             user.setUserid(1);
-        }else{
-        user.setUserid(users.get(users.size() - 1).getUserid() + 1);}
+        }
         userRepository.addUser(user);
     }
 
     @Override
     public UserResponse authorization(String login, String password) {
-        List<User> users = userRepository.allUsers();
-        User user = users.stream().filter(user1 -> user1.getLogin().equals(login)).findFirst().orElseThrow(() -> new ClientException("Пользователь с логином " + login + " не найден"));
-        if (!user.getPassword().equals(password)) {
-            throw new ClientException("Не верно введён пароль");
-        }
-        var userResponse =userMapper.mapFromUser(user);
-        return userResponse;
+        User user = userRepository.findByLogin(login);
+        if (user.getPassword().equals(password)) {
+            var userResponse = userMapper.mapFromUser(user);
+            return userResponse;
+        } else return null;
     }
 
     public void deleteClient(long clientId) {
-        userRepository.deleteUser(userRepository.getUserById(clientId));
+        userRepository.deleteUser(userRepository.getUserById(clientId).getUserid());
     }
 
-    public List<UserResponse> usersInfo() {
+    public List<UserResponse> usersInfo() throws SQLException {
         return userRepository.allUsers().stream().map(userMapper::mapFromUser).collect(Collectors.toList());
     }
 
+    @Override
+    public UserResponse findUserById(Long id) {
+        return userMapper.mapFromUser(userRepository.getUserById(id));
+    }
+
+    @Override
+    public void deleteUser(Long userid) {
+        userRepository.deleteUser(userid);
+    }
 }

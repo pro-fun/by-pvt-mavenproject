@@ -6,10 +6,10 @@
                       https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0"
          metadata-complete="true">
-<servlet>
-    <servlet-name>RegisterServlet</servlet-name>
-    <servlet-class>by.academypvt.controller.RegisterServlet</servlet-class>
-</servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>by.academypvt.controller.RegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -24,13 +24,75 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>GoodServlet</servlet-name>
-        <servlet-class>by.academypvt.controller.GoodServlet</servlet-class>
+        <servlet-class>by.academypvt.controller.goods.GoodServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GoodServlet</servlet-name>
         <url-pattern>/goods</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GoodChangingServlet</servlet-name>
+        <servlet-class>by.academypvt.controller.goods.GoodChangingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoodChangingServlet</servlet-name>
+        <url-pattern>/goodsupdate</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UserChangingServlet</servlet-name>
+        <servlet-class>by.academypvt.controller.users.UserChangingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserChangingServlet</servlet-name>
+        <url-pattern>/usersupdate</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>BasketServlet</servlet-name>
+        <servlet-class>by.academypvt.controller.basket.BasketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BasketServlet</servlet-name>
+        <url-pattern>/basket</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>by.academypvt.controller.orders.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/orders</url-pattern>
+    </servlet-mapping>
 
 
+
+
+    <filter>
+        <filter-name>Authentication</filter-name>
+        <filter-class>by.academypvt.filter.Authentication</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/goods</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/basket</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/orders</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>AdministrationFilter</filter-name>
+        <filter-class>by.academypvt.filter.AdministrationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdministrationFilter</filter-name>
+        <url-pattern>/usersupdate</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdministrationFilter</filter-name>
+        <url-pattern>/goodsupdate</url-pattern>
+    </filter-mapping>
 
 </web-app>

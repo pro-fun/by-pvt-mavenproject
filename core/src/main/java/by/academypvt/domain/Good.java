@@ -22,6 +22,10 @@ public class Good implements Serializable {
         this.quantity = quantity;
     }
 
+    public Good() {
+
+    }
+
     public Long getId() {
         return id;
     }

@@ -2,10 +2,10 @@ package by.academypvt.api.dto.user;
 
 
 public class UserResponse {
+    private Long userid;
     private String name;
     private String surname;
     private String login;
-    private String fullName;
     private Role role;
 
     public Role getRole() {
@@ -40,12 +40,13 @@ public class UserResponse {
         this.login = login;
     }
 
-    public String getFullName() {
-        return fullName;
+
+    public Long getUserid() {
+        return userid;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setUserid(Long userid) {
+        this.userid = userid;
     }
 
     @Override
@@ -54,7 +55,6 @@ public class UserResponse {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", login='" + login + '\'' +
-                ", fullName='" + fullName + '\'' +
                 '}';
     }
 }

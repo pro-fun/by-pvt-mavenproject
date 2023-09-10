@@ -1,8 +1,6 @@
 package by.academypvt.api.dto.good;
 
 
-import by.academypvt.api.dto.user.Role;
-
 public class GoodRequest {
     private Long id;
     private Type type;
@@ -66,5 +64,17 @@ public class GoodRequest {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "GoodRequest{" +
+                "id=" + id +
+                ", type=" + type +
+                ", name='" + name + '\'' +
+                ", code=" + code +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
 }

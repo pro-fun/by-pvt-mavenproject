@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 
 import static by.academypvt.api.dto.user.Role.CLIENT;
@@ -26,7 +27,12 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        var users = userService.usersInfo();
+        List<UserResponse> users = null;
+        try {
+            users = userService.usersInfo();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         PrintWriter printWriter = resp.getWriter();
         resp.setContentType("text/html");
         printWriter.println(users.toString());
@@ -42,13 +48,12 @@ public class RegisterServlet extends HttpServlet {
         UserRequest userRequest = new UserRequest(name, surname, login, password, CLIENT);
         try{
             userService.registration(userRequest);
-
-        List<UserResponse> users = userService.usersInfo();
-        req.setAttribute("users", users);
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
         } catch (ClientException e){
             req.setAttribute("message", e);
-            req.getRequestDispatcher("/error.jsp").forward(req, resp);
+            req.getRequestDispatcher("/errorAuthorise.jsp").forward(req, resp);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

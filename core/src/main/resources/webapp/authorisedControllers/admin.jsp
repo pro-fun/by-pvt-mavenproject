@@ -20,7 +20,7 @@
 
 <form name="Form"
       method="Post"
-      action="http://localhost:8081/goods">
+      action="http://localhost:8081/goodsupdate">
     <div>
     <label><b>Наименование товара</b></label>
     <input type="text" placeholder="Название товара" name="name">
@@ -52,7 +52,7 @@
 <br>
 <form name="Form"
       method="post"
-      action="http://localhost:8081/goods">
+      action="http://localhost:8081/goodsupdate">
     <div>
         <label><b>Id товара</b></label>
         <input type="text" placeholder="ID" name="idDelete">
@@ -73,9 +73,40 @@
     <input type=submit value="Найти товар">
     </div>
 </form>
+
+
 <br>
 
+<br>
+<form name="Form"
+      method="GET"
+      action="http://localhost:8081/usersupdate">
+      <input type=submit value="Все клиенты магазина">
+      </form>
+      <br>
 
+<form name="Form"
+      method="post"
+      action="http://localhost:8081/usersupdate">
+    <div>
+        <label><b>Id клиента</b></label>
+        <input type="text" placeholder="ID" name="id">
+            <input type="hidden" name="action" value = "find">
+    <input type=submit value="Найти клиента по ID">
+    </div>
+</form>
+      <br>
+
+<form name="Form"
+      method="post"
+      action="http://localhost:8081/usersupdate">
+    <div>
+        <label><b>Id клиента</b></label>
+        <input type="text" placeholder="ID" name="idDelete">
+            <input type="hidden" name="action" value = "delete">
+    <input type=submit value="Удалить клиента по ID">
+    </div>
+</form>
 
 
 </body>

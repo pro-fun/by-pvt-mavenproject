@@ -1,8 +1,6 @@
 package by.academypvt.api.dto.good;
 
 
-import by.academypvt.api.dto.user.Role;
-
 public class GoodResponse{
     private Long id;
     private Type type;
@@ -57,5 +55,17 @@ public class GoodResponse{
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "GoodResponse{" +
+                "id=" + id +
+                ", type=" + type +
+                ", name='" + name + '\'' +
+                ", code=" + code +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
 }

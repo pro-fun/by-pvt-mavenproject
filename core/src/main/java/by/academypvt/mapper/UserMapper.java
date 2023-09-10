@@ -13,8 +13,8 @@ public class UserMapper {
 
     public UserResponse mapFromUser(User user) {
         UserResponse userResponse = new UserResponse();
+        userResponse.setUserid(user.getUserid());
         userResponse.setName(user.getName());
-        userResponse.setFullName(user.getSurname());
         userResponse.setLogin(user.getLogin());
         userResponse.setRole(user.getRole());
         return userResponse;
