@@ -9,7 +9,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.academypvt.api.dto.order.State.INCOMPLETED;
 
 public class OrderRepositoryJdbc implements OrderRepository {
     private final String FIND_BY_ID = "select * from shop.order o where o.id=?";

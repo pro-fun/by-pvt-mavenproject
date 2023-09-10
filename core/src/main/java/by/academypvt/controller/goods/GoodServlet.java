@@ -1,11 +1,7 @@
 package by.academypvt.controller.goods;
 
-import by.academypvt.api.dto.good.GoodRequest;
-import by.academypvt.api.dto.good.GoodResponse;
-import by.academypvt.api.dto.good.Type;
-import by.academypvt.api.dto.user.UserResponse;
+
 import by.academypvt.config.ApplicationContext;
-import by.academypvt.exception.ClientException;
 import by.academypvt.service.GoodService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
