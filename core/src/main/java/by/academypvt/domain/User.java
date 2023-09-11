@@ -4,6 +4,7 @@ package by.academypvt.domain;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
+import by.academypvt.api.dto.user.Role;
 
 public class User implements Serializable {
     @Serial
@@ -18,7 +19,8 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "userid=" + userid +
+                "userid=" + userid +'\'' +
+                "login=" + login +'\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", role=" + role +
@@ -73,26 +75,25 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return userid == user.userid && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(login, user.login) && Objects.equals(password, user.password) && role == user.role;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(userid, name, surname, login, password, role);
-    }
 
-    public User() {
-    }
-
-    public User(String name, String surname, String login, String password) {
+    public User(String name, String surname, String login, String password, Role role) {
         this.name = name;
         this.surname = surname;
         this.login = login;
         this.password = password;
+        this.role = role;
+    }
+
+    public User(long userid, String name, String surname, String login, String password, Role role) {
+        this.userid = userid;
+        this.name = name;
+        this.surname = surname;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User() {
     }
 }
