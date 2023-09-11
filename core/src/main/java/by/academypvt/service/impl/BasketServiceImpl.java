@@ -24,20 +24,29 @@ public class BasketServiceImpl implements BasketService {
 
 
     @Override
-    public void deleteGoodFromBasket(Long basketId) {
+    public boolean deleteGoodFromBasket(Long basketId) {
         Basket basket = basketRepository.getBasketByBasketid(basketId);
-        Long count = basket.getCount();
-        Long prosuctId = basket.getProductId();
-        orderRepository.addCostToOrder(basket.getOrderId(),(-basket.getCount()),basket.getProductId());
-        basketRepository.deleteBasket(basketId);
+        if (basket.getId()==null) {
+            return false;
+        } else {
+            Long count = basket.getCount();
+            Long productId = basket.getProductId();
+            orderRepository.addCostToOrder(basket.getOrderId(), (-count), productId);
+            basketRepository.deleteBasket(basketId);
+            return true;
         }
+    }
 
     @Override
     public List<Basket> toSeeGoodsInBasket(Long userid) {
         String state = String.valueOf(INCOMPLETED);
         Long orderId = orderRepository.findOrderNumber(userid, state);
+        if (orderId==null){
+            orderRepository.addOrder(state,userid);
+            orderId = orderRepository.findOrderNumber(userid, state);
+        }
         List<Basket> baskets = basketRepository.getBasketsByOrderId(orderId);
-        if (baskets == null) {
+        if (baskets.size() ==0) {
             return null;
         } else {
             return baskets;

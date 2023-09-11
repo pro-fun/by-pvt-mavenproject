@@ -61,7 +61,12 @@ public class BasketServlet extends HttpServlet {
                 req.getRequestDispatcher("authorisedControllers/client.jsp").forward(req, resp);
             }else if (action.equals("delete")) {
                 Long basketId = Long.valueOf(req.getParameter("basketId"));
-                basketService.deleteGoodFromBasket(basketId);
+                boolean deleteBasket = basketService.deleteGoodFromBasket(basketId);
+                if(deleteBasket==false){
+                    String message = "В вашей корзине нет товара с данным ID";
+                    req.setAttribute("message", message);
+                    req.getRequestDispatcher("error.jsp").forward(req, resp);
+                }
             }
 
         } catch (NumberFormatException e) {

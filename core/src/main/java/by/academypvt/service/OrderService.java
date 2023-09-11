@@ -1,9 +1,7 @@
 package by.academypvt.service;
 
-import by.academypvt.api.dto.order.OrderRequest;
 import by.academypvt.api.dto.order.OrderResponse;
-import by.academypvt.domain.Basket;
-import by.academypvt.domain.Order;
+import by.academypvt.api.dto.order.State;
 
 import java.util.List;
 
@@ -16,5 +14,6 @@ public interface OrderService {
     OrderResponse getOrderForUser (Long userId);
     void deleteOrderById(Long id);
     OrderResponse getOrderById(Long id);
+    void toChangeOrderForAdmin(Long id, State state);
 
 }

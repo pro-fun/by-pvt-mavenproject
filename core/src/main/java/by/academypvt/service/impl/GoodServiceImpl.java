@@ -35,7 +35,10 @@ public class GoodServiceImpl implements GoodService {
 
     @Override
     public GoodResponse finGoodById(Long id) {
-        return goodMapper.mapFromGood(goodRepositoryImpl.findGoodById(id));
+        var good = goodRepositoryImpl.findGoodById(id);
+        if (good == null){
+            return null;
+        } else return goodMapper.mapFromGood(good);
     }
 
     @Override

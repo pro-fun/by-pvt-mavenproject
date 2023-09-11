@@ -1,9 +1,7 @@
 package by.academypvt.service.impl;
 
-import by.academypvt.api.dto.order.OrderRequest;
 import by.academypvt.api.dto.order.OrderResponse;
 import by.academypvt.api.dto.order.State;
-import by.academypvt.domain.Basket;
 import by.academypvt.domain.Order;
 import by.academypvt.mapper.OrderMapper;
 import by.academypvt.repository.BasketRepository;
@@ -59,6 +57,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public void toChangeOrderForAdmin(Long id, State state) {
+
+        orderRepository.toChangeOrderState(id, state);
+    }
+
+    @Override
     public List<OrderResponse> allOrders() {
         return orderRepository.allOrders().stream().map(orderMapper::mapFromOrder).collect(Collectors.toList());
     }
@@ -70,6 +74,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderResponse getOrderById(Long id) {
-        return orderMapper.mapFromOrder(orderRepository.findOrderById(id));
+        var order = orderRepository.findOrderById(id);
+        if(order==null){
+            return null;
+        }
+        else return orderMapper.mapFromOrder(order);
     }
 }

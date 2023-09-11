@@ -154,6 +154,30 @@
     </div>
 </form>
 
+<b>Изменить статус заказа</b>
+<form name="Form"
+      method="Post"
+      action="http://localhost:8081/ordersforadmin">
+    <div>
+
+    <select name="state">
+    <option disabled>Выберите тип товара</option>
+    <option value="INCOMPLETED">Формируется</option>
+    <option value="WAITING_FOR_DEPART">Ожидает отправки</option>
+    <option value="ON_THE_WAY">В пути</option>
+    <option value="DONE">Доставлен</option>
+    </select>
+
+        <label><b>ID товара</b></label>
+        <input type="text" placeholder="ID" name="id">
+
+
+    <input type="hidden" name="action" value = "change">
+    <input type=submit value="Изменить статус">
+    </div>
+</form>
+<br>
+
 <b>Выйти из профиля</b>
 <form name="Form"
       method="get"

@@ -32,6 +32,11 @@ public class GoodServlet extends HttpServlet {
         if (action.equals("find")) {
                 Long idFind = Long.valueOf(req.getParameter("idFind"));
                 var good = goodService.finGoodById(idFind);
+                if(good==null){
+                    String message = "Товар с таким ID не найден";
+                    req.setAttribute("message", message);
+                    req.getRequestDispatcher("/error.jsp").forward(req, resp);
+                }
                 req.setAttribute("good",good);
                 req.getRequestDispatcher("authorisedControllers/findedgood.jsp").forward(req,resp);
             }

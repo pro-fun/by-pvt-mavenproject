@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface BasketService {
 
-    void deleteGoodFromBasket(Long basketId);
+    boolean deleteGoodFromBasket(Long basketId);
     List<Basket> toSeeGoodsInBasket(Long userid);
 }
